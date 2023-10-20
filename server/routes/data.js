@@ -45,5 +45,16 @@ router.delete('/api/data/:id', async (req, res) => {
     res.send(results).status(200);
 })
 
+// redirect
+router.get('/:shorturlid', async (req, res) => {
+    let shorturlid = req.params.shorturlid
+    let collection = db.collection('data');
+    let existShortUrl = await collection.find({ "short_url": shorturlid }).limit(1).toArray();
+    if (existShortUrl.length > 0) {
+        res.redirect(existShortUrl[0].long_url)
+        await collection.updateOne({ "short_url": shorturlid }, { $inc: { "clicks": +1 } })
+    }
+})
+
 
 export default router;
