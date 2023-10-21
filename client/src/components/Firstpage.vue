@@ -1,6 +1,5 @@
 <script setup>
-import { onMounted, onUpdated, ref } from "vue";
-import { getAllData } from "../composable/getData.js";
+import { ref } from "vue";
 import isUrl from 'is-url';
 import QrcodeVue from 'qrcode.vue'
 import { useRouter } from 'vue-router'
@@ -30,11 +29,23 @@ const AddData = async (link) => {
             longUrl.value = ''
             return data;
         } else if (res.status === 400) {
-            alert('This URL already exists')
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'This URL already exists',
+                showConfirmButton: false,
+                timer: 1500
+            })
         }
         longUrl.value = ''
     } else {
-        alert('Please enter a valid URL')
+        Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Please enter a valid URL',
+            showConfirmButton: false,
+            timer: 1500
+        })
         longUrl.value = ''
     }
 }

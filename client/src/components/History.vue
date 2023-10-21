@@ -5,7 +5,6 @@ import { useRouter } from 'vue-router'
 import Swal from 'sweetalert2'
 import QrcodeVue from 'qrcode.vue'
 
-
 const router = useRouter()
 const data = ref('')
 const host = import.meta.env.VITE_ROOT_API + '/'
