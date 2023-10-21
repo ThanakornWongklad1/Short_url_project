@@ -1,11 +1,11 @@
 <script setup>
-import Firstpage from "./components/Firstpage.vue";
+import { RouterView } from 'vue-router';
 
 </script>
  
 <template>
   <div>
-    <Firstpage />
+    <RouterView />
   </div>
 </template>
  

@@ -5,7 +5,19 @@ export default {
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      spacing: {
+        '128': '32rem',
+      },
+      colors: {
+        'sky-green': '#23BEAC',
+        'sky-blue': '#1691A7',
+      },
+      spacing: {
+        '128': '32rem',
+        '140': '50rem',
+      },
+    },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 }

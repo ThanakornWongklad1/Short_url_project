@@ -5,10 +5,11 @@ import { ObjectId } from 'mongodb';
 const router = express.Router();
 
 
-// get
+// get all data and sort by time desc
+
 router.get('/api/data', async (req, res) => {
     let collection = db.collection('data');
-    let results = await collection.find().toArray();
+    let results = await collection.find().sort({ "time": -1 }).toArray();
     res.send(results).status(200);
 })
 
@@ -39,9 +40,9 @@ router.post('/api/create-short-url', async (req, res) => {
 })
 
 // delete  
-router.delete('/api/data/:id', async (req, res) => {
+router.delete('/api/data/:shortId', async (req, res) => {
     let collection = db.collection('data');
-    let results = await collection.deleteOne({ "_id": new ObjectId(req.params.id) });
+    let results = await collection.deleteOne({ "short_url": req.params.shortId });
     res.send(results).status(200);
 })
 

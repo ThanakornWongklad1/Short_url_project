@@ -11,7 +11,9 @@
     "express": "^4.18.2",
     "is-url": "^1.2.4",
     "qrcode.vue": "^3.4.1",
-    "vue": "^3.3.4"
+    "sweetalert2": "^11.7.32",
+    "vue": "^3.3.4",
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.3.4",
