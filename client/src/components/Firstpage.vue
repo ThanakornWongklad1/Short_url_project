@@ -27,7 +27,7 @@ const AddData = async (link) => {
             const resData = await res.json();
             addedData.value = host + resData?.results
             longUrl.value = ''
-            return data;
+            return resData;
         } else if (res.status === 400) {
             Swal.fire({
                 position: 'center',
@@ -100,7 +100,7 @@ const downloadQR = () => {
                     <div class="text-5xl font-bold ml-10 mt-5 text-white">to Shorten</div>
                     <div class="flex mt-32">
                         <input type="text" @keyup.enter="AddData(longUrl)" placeholder="Paste your link here."
-                            class="p-4 w-140 rounded-s-xl" v-model="longUrl">
+                            class="p-4 w-135 rounded-s-xl" v-model="longUrl">
                         <button @click="AddData(longUrl)"
                             class="bg-zinc-800  text-white p-4 hover:bg-zinc-600 transition-colors duration-150 rounded-e-xl">
                             Shorten
@@ -108,7 +108,7 @@ const downloadQR = () => {
                     </div>
                 </div>
                 <!-- result -->
-                <div class="flex-col mr-16 mt-20" v-if="addedData">
+                <div class="flex-col mr-16 mt-16" v-if="addedData">
                     <div class="flex justify-center text-3xl font-bold">Your Short URL here!</div>
                     <qrcode-vue v-if="addedData" :value="addedData" :size="250" level="M" class="mx-auto mt-5" />
                     <div class="flex justify-center text-2xl font-bold mt-4">Short URL</div>

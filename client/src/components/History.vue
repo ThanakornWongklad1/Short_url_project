@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted, onUpdated, ref } from "vue";
-import { getAllData } from "../composable/getData.js";
+import { getAllData,copyToClipboard } from "../composable/getData.js";
 import { useRouter } from 'vue-router'
 import Swal from 'sweetalert2'
 import QrcodeVue from 'qrcode.vue'
@@ -48,15 +48,6 @@ const showModalDelete = (shortId) => {
         }
     })
 }
-const copyToClipboard = (text) => {
-    const elem = document.createElement('textarea');
-    elem.value = text;
-    document.body.appendChild(elem);
-    elem.select();
-    document.execCommand('copy');
-    document.body.removeChild(elem);
-    alert('Copied to clipboard');
-}
 const formatDateTime = (date) => {
     const d = new Date(date)
     const options = {
@@ -69,22 +60,6 @@ const formatDateTime = (date) => {
     };
     return d.toLocaleString("en-GB", options);
 }
-
-const showModalQRcode = (link) => {
-    Swal.fire({
-        title: 'QR Code',
-        html: `<div class="flex justify-center"><qrcode-vue value="${link}" :options="{size: 200}"></qrcode-vue></div>`,
-        showCancelButton: true,
-        confirmButtonColor: '#F59E0B',
-        cancelButtonColor: '#EF4444',
-        confirmButtonText: 'Download'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            downloadQR()
-        }
-    })
-}
-
 </script>
  
 <template>
